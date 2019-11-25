@@ -10,6 +10,9 @@ export default class PlayerStore {
   //     'https://p.scdn.co/mp3-preview/f0521c21357ae522872b59cf4dd082ad65880fe8?cid=e4abb1ea8fdf4926a463960abd146fcb',
   // }
   nowPlaying = {}
+  @observable
+  progressing = {}
+
   @action
   play(track) {
     const { previewUrl, name, artist, image } = track
@@ -21,5 +24,19 @@ export default class PlayerStore {
     this.nowPlaying.url = previewUrl
 
     console.log('Now Playing:', this.nowPlaying.title)
+  }
+
+  @action
+  pause(status) {
+    this.nowPlaying.playing = status
+  }
+
+  @action
+  progress(progress) {
+    console.log(progress)
+    this.progressing.timeElapsed = progress.playedSeconds.toFixed(2)
+    this.progressing.progress = progress.played.toFixed(2)
+    this.progressing.duration = progress.loadedSeconds.toFixed(2)
+    console.log('Now Progress:', this.progressing.progress)
   }
 }

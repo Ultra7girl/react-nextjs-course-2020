@@ -12,8 +12,6 @@ function SongListItem({ track, playerStore }) {
     return null
   }
 
-  // const playerStore = new PlayerStore()
-
   return (
     <Box
       width={1}
@@ -39,7 +37,6 @@ function SongListItem({ track, playerStore }) {
               cursor: 'pointer',
             }}
             onClick={() => {
-              console.log('Play', track)
               playerStore.play(track)
             }}>
             <Icon

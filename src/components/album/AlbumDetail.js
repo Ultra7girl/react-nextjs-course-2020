@@ -6,7 +6,7 @@ import { useMember } from '@lib/auth'
 
 import DetailPageHeader from '@components/_common/DetailPageHeader'
 import SongList from '@common/SongList'
-import * as Service from '@features/album/services'
+import * as AlbumService from '@features/album/services'
 import { Fetch } from '@lib/api'
 
 // AlbumDetailPage.defaultProps = {
@@ -60,7 +60,7 @@ function AlbumDetailPage({ data }) {
   }
   return (
     <Flex flexWrap="wrap" css={{ padding: '60px 120px' }}>
-      <Fetch service={() => Service.getAlbumById(id, { token })}>
+      <Fetch service={() => AlbumService.getAlbumById(id, { token })}>
         {props => {
           const { data } = props
           return (

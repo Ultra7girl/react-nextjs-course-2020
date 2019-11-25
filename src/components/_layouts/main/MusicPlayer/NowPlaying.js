@@ -5,7 +5,6 @@ import { inject } from '@lib/store'
 
 function NowPlaying({ playerStore }) {
   const { image, title, subTitle } = playerStore.nowPlaying
-
   return (
     <Flex
       css={{

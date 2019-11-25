@@ -6,7 +6,7 @@ export function getNewReleases({ token, limit }) {
 
 export function getAlbumById(id, { token }) {
   return API.getAlbumById(id, { token }).then(response => {
-    console.log(response)
+    // console.log(response)
     return {
       ...response,
       title: response.name,

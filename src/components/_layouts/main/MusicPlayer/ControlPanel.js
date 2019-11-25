@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Box } from '@grid'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import colors from '@features/_ui/colors'
+import { inject } from '@lib/store'
 
 function ButtonControl({ icon, circle = false, active = false, onClick }) {
   const css = {
@@ -51,4 +52,4 @@ function ControlPanel({ playerStore }) {
   )
 }
 
-export default ControlPanel
+export default inject('playerStore')(ControlPanel)

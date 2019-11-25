@@ -13,6 +13,7 @@ function Player({ playerStore }) {
       progressInterval={50}
       volume={0.8}
       muted={false}
+      // onProgress={data => console.log('onProgress', data)}
       onProgress={data => console.log('onProgress', data)}
       onEnded={() => {
         console.log('onEnded')

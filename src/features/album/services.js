@@ -7,7 +7,6 @@ export function getNewReleases({ token, limit }) {
 export function getAlbumById(id, { token }) {
   return API.getAlbumById(id, { token }).then(response => {
     console.log(response)
-
     return {
       ...response,
       title: response.name,
@@ -25,7 +24,10 @@ export function getAlbumById(id, { token }) {
               return artist.name
             })
             .join(','),
+          album: track.name,
           previewUrl: track.preview_url,
+          durationMs: track.duration_ms,
+          image: response.images[0].url,
         }
       }),
     }

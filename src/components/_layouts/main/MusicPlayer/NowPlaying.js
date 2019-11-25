@@ -1,11 +1,9 @@
 import React from 'react'
 import { Flex, Box } from '@grid'
 import colors from '@features/_ui/colors'
+import { inject } from '@lib/store'
 
-import PlayerStore from '@features/player/store'
-
-function NowPlaying() {
-  const playerStore = new PlayerStore()
+function NowPlaying({ playerStore }) {
   const { image, title, subTitle } = playerStore.nowPlaying
 
   return (
@@ -35,4 +33,4 @@ function NowPlaying() {
   )
 }
 
-export default NowPlaying
+export default inject('playerStore')(NowPlaying)

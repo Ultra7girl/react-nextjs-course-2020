@@ -3,16 +3,16 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { Flex, Box } from '@grid'
 import colors from '@features/_ui/colors'
 import { convertSecondsToMinutes } from '@features/player/utilities'
+import { inject } from '@lib/store'
 
-import PlayerStore from '@features/player/store'
-
-export default function SongListItem({ track }) {
+export default inject('playerStore')(SongListItem)
+function SongListItem({ track, playerStore }) {
   const [hover, setHover] = useState(false)
   if (track.previewUrl === null) {
     return null
   }
 
-  const playerStore = new PlayerStore()
+  // const playerStore = new PlayerStore()
 
   return (
     <Box

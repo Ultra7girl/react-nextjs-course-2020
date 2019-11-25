@@ -3,7 +3,7 @@ import { Flex } from '@grid'
 import SongListItem from './SongListItem'
 
 export default function SongList({ tracks }) {
-  console.log(tracks)
+  // console.log(tracks)
   return (
     <Flex
       flexWrap="wrap"

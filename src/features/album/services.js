@@ -5,5 +5,29 @@ export function getNewReleases({ token, limit }) {
 }
 
 export function getAlbumById(id, { token }) {
-  return API.getAlbumById(id, { token })
+  return API.getAlbumById(id, { token }).then(response => {
+    console.log(response)
+
+    return {
+      ...response,
+      title: response.name,
+      subTitle: response.artists
+        .map(artist => {
+          return artist.name
+        })
+        .join(','),
+      image: response.images[0].url,
+      tracks: response.tracks.items.map(track => {
+        return {
+          ...track,
+          artist: track.artists
+            .map(artist => {
+              return artist.name
+            })
+            .join(','),
+          previewUrl: track.preview_url,
+        }
+      }),
+    }
+  })
 }

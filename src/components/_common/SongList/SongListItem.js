@@ -8,7 +8,6 @@ import PlayerStore from '@features/player/store'
 
 export default function SongListItem({ track }) {
   const [hover, setHover] = useState(false)
-
   if (track.previewUrl === null) {
     return null
   }

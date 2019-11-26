@@ -1,17 +1,21 @@
 import { observable, action } from 'mobx'
+import { convertSecondsToMinutes } from '@features/player/utilities'
 export default class PlayerStore {
   @observable
-  // nowPlaying = {
-  //   playing: true,
-  //   title: 'ไกลแค่ไหน คือ ใกล้',
-  //   subTitle: 'Getsunova',
-  //   image: 'https://i.scdn.co/image/ab67616d0000b273e76e64aa449965dd5e439c53',
-  //   url:
-  //     'https://p.scdn.co/mp3-preview/f0521c21357ae522872b59cf4dd082ad65880fe8?cid=e4abb1ea8fdf4926a463960abd146fcb',
-  // }
-  nowPlaying = {}
+  nowPlaying = {
+    playing: false,
+    title: '',
+    subTitle: '',
+    image: '',
+    url: '',
+  }
   @observable
   progressing = {}
+
+  @observable
+  queue = {
+    tracks: [],
+  }
 
   @action
   play(track) {
@@ -34,9 +38,19 @@ export default class PlayerStore {
   @action
   progress(progress) {
     console.log(progress)
-    this.progressing.timeElapsed = progress.playedSeconds.toFixed(2)
-    this.progressing.progress = progress.played.toFixed(2)
-    this.progressing.duration = progress.loadedSeconds.toFixed(2)
+    this.progressing.timeElapsed = convertSecondsToMinutes(
+      progress.playedSeconds,
+    )
+    this.progressing.progress = progress.played
+    this.progressing.duration = convertSecondsToMinutes(progress.loadedSeconds)
+
     console.log('Now Progress:', this.progressing.progress)
+  }
+
+  @action
+  addToQueue(track) {
+    console.log(track)
+    this.queue.tracks.push(track)
+    console.log(this.queue.tracks)
   }
 }

@@ -20,5 +20,5 @@ function Player({ playerStore }) {
     />
   )
 }
-`
+
 export default inject('playerStore')(Player)

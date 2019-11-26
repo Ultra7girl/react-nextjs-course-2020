@@ -43,7 +43,7 @@ import { inject } from '@lib/store'
 function QueuePage({ playerStore }) {
   const { token } = useMember()
   const { tracks } = playerStore.tracks
-  console.log('queue page:', tracks)
+  console.log('Queue page:', tracks)
   if (token === null) {
     return null
   }
